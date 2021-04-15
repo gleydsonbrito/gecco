@@ -1,0 +1,4 @@
+NGEN = 10
+NPOP = 20
+CXPB = 0.7
+MUTPB = 0.03

@@ -1,12 +1,9 @@
 from toolbox import get_toolbox
 from statistics import get_statistics, get_best_individual
+from constants import NGEN, NPOP, CXPB, MUTPB, 
 from deap import algorithms, tools
 import random as rd
 import numpy as np
-
-NGEN = 10
-NPOP = 20
-CXPB, MUTPB = 0.7, 0.03
 
 toolbox = get_toolbox()
 stats = get_statistics()
@@ -27,5 +24,5 @@ algorithms.eaSimple(
     verbose=True
 )
 
-print(hal[0])
-print('Best Fit ', evaluate(list(hal[0])))
+print(best_individual[0])
+print('Best Fit: {}'.format(evaluate(list(hal[0]))))
