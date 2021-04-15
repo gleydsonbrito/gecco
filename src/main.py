@@ -1,4 +1,5 @@
-from load import get_ind_size, get_adjacency_matrix, instance_tsp
+from evaluate import evaluate
+from individual import create_individual
 from deap import base, creator, tools, algorithms
 import random as rd
 import numpy as np
@@ -52,4 +53,3 @@ algorithms.eaSimple(
 
 print(hal[0])
 print('Best Fit ', evaluate(list(hal[0])))
-print(instance_tsp)
