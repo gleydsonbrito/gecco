@@ -1,4 +1,4 @@
-form deap import tools
+from deap import tools
 import numpy as np
 
 def get_statistics():
