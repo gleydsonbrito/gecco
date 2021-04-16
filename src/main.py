@@ -1,6 +1,6 @@
 from toolbox import get_toolbox
 from statistics import get_statistics, get_stats_from_best_ind
-from constants import NGEN, NPOP, CXPB, MUTPB, 
+from constants import NGEN, NPOP, CXPB, MUTPB
 from deap import algorithms
 
 toolbox = get_toolbox()
@@ -22,5 +22,6 @@ algorithms.eaSimple(
     verbose=True
 )
 
-print(best_individual[0])
-print('Best Fit: {}'.format(evaluate(list(hal[0]))))
+print("Best ind: {}".format(best_individual[0]))
+print("Fitness Value: {}".format(best_individual[0].fitness.values))
+#print('Best Fit: {}'.format(evaluate(list(hal[0]))))
