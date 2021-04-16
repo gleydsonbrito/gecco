@@ -1,9 +1,7 @@
 from toolbox import get_toolbox
 from statistics import get_statistics, get_best_individual
 from constants import NGEN, NPOP, CXPB, MUTPB, 
-from deap import algorithms, tools
-import random as rd
-import numpy as np
+from deap import algorithms
 
 toolbox = get_toolbox()
 stats = get_statistics()

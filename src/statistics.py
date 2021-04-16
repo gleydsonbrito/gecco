@@ -1,4 +1,5 @@
 form deap import tools
+import numpy as np
 
 def get_statistics():
     stats = tools.Statistics(lambda ind: ind.fitness.values)
