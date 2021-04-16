@@ -11,6 +11,6 @@ def get_statistics():
 
     return stats
 
-def get_best_individual():
+def get_stats_from_best_ind():
     hal = tools.HallOfFame(1)
     return hal

@@ -1,11 +1,11 @@
 from toolbox import get_toolbox
-from statistics import get_statistics, get_best_individual
+from statistics import get_statistics, get_stats_from_best_ind
 from constants import NGEN, NPOP, CXPB, MUTPB, 
 from deap import algorithms
 
 toolbox = get_toolbox()
 stats = get_statistics()
-best_individual = get_best_individual()
+best_individual = get_stats_from_best_ind()
 
 pop = toolbox.population(n=NPOP)
 for i in pop:
