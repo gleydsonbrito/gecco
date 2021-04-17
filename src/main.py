@@ -10,6 +10,7 @@ best_individual = get_stats_from_best_ind()
 pop = toolbox.population(n=NPOP)
 for i in pop:
     i.fitness.values = toolbox.evaluate(i)
+    print(i.fitness.values)
 
 algorithms.eaSimple(
     pop,

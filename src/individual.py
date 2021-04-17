@@ -1,6 +1,7 @@
 import random
 from constants import LOWER, UPPER
 
+
 def create_individual():
     candiadate_solution = []
     for k in range(29):

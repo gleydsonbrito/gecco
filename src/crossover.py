@@ -1,11 +1,10 @@
 import random
 
+
 def mate(indA, indB):
-    iA = indA.copy()
-    iB = indB.copy()
-    q_points = random.randint(0, 28)
+    q_points = random.randint(0, 4)
     for i in range(q_points):
         point = random.randint(0, 28)
-        iA[point], iB[point] = iB[point], iA[point]
+        indA[point], indB[point] = indB[point], indA[point]
 
-    return iA, iB
+    return indA, indB

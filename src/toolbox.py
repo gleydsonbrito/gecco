@@ -7,11 +7,12 @@ from mutate import mutate
 creator.create('FitnessMin', base.Fitness, weights=(-1.0,))
 creator.create('Individual', list, fitness=creator.FitnessMin)
 
+
 def get_toolbox():
     toolbox = base.Toolbox()
     toolbox.register('cromossome', create_individual)
     toolbox.register('individual', tools.initIterate,
-                    creator.Individual, toolbox.cromossome)
+                     creator.Individual, toolbox.cromossome)
     toolbox.register('population', tools.initRepeat, list, toolbox.individual)
     toolbox.register('select', tools.selTournament, tournsize=3)
     toolbox.register('mate', mate)
