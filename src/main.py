@@ -1,5 +1,6 @@
 from toolbox import get_toolbox
 from statistics import get_statistics, get_stats_from_best_ind
+from storage import save_individual
 from constants import NGEN, NPOP, CXPB, MUTPB
 from deap import algorithms
 
@@ -10,7 +11,7 @@ best_individual = get_stats_from_best_ind()
 pop = toolbox.population(n=NPOP)
 for i in pop:
     i.fitness.values = toolbox.evaluate(i)
-    print(i.fitness.values)
+    save_individual(i.fitness.values, i)
 
 algorithms.eaSimple(
     pop,
