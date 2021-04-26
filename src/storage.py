@@ -20,6 +20,6 @@ def get_csv():
         for c in string_croms:
             float_croms.append(float(c.strip()))
 
-        inds.append([fitnesss, float_croms])
+        inds.append([fitness, float_croms])
 
     return inds
