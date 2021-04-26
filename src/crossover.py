@@ -1,4 +1,5 @@
 import random
+from storage import save_individual
 
 
 def mate(indA, indB):
@@ -6,5 +7,4 @@ def mate(indA, indB):
     for i in range(q_points):
         point = random.randint(0, 28)
         indA[point], indB[point] = indB[point], indA[point]
-
     return indA, indB

@@ -10,16 +10,16 @@ def save_individual(fit, cromossome):
 
 def get_csv():
     inds = []
-    data_frame = pd.read_csv('files/individuals.csv')
+    data_frame = pd.read_csv('../files/individuals.csv')
     for i in data_frame.values.tolist():
         float_croms = []
-        fit = float(i[0][1:7])
+        fitness = float(i[0][1:-2])
         final_pos = len(i[1])-1
         substring_croms = i[1][1:final_pos]
         string_croms = substring_croms.split(sep=',')
         for c in string_croms:
             float_croms.append(float(c.strip()))
 
-        inds.append([fit, float_croms])
+        inds.append([fitnesss, float_croms])
 
     return inds
