@@ -1,4 +1,4 @@
-from constants import MUTPB, LOWER, UPPER
+from constants import LOWER, UPPER
 from storage import get_csv
 from sklearn.cluster import KMeans
 from scipy.spatial import distance
@@ -6,10 +6,8 @@ import random
 
 
 def mutate(ind):
-    pb = random.uniform(0, 1)
-    if pb <= MUTPB:
-        point = random.randint(0, 28)
-        ind[point] = random.uniform(LOWER[point], UPPER[point])
+    point = random.randint(0, 28)
+    ind[point] = random.uniform(LOWER[point], UPPER[point])
     return ind,
 
 
@@ -29,7 +27,10 @@ def centroid_mutate(ind):
             min_distance = dist
             mutated_ind = centroids[i]
 
-    return mutated_ind,
+    for i in range(len(mutated_ind)):
+        ind[i] = mutated_ind[i]
+
+    return ind,
 
 
 # mut = centroid_mutate([6.815736838193935, 11.66095896456695, 5.890178907164971, 3.7102530295496177, 6.070594996464887, 7.403798774843138, 3.694358678086288, 3.56187077108757, 34.566743841688805, 23.660429548127897, 3.6600788353571154, 6.815460134330752, 1.8776378942214158, 0.10704545213839409,
