@@ -16,7 +16,7 @@ def get_toolbox():
     toolbox.register('population', tools.initRepeat, list, toolbox.individual)
     toolbox.register('select', tools.selTournament, tournsize=3)
     toolbox.register('mate', mate)
-    toolbox.register('mutate', mutate)
+    toolbox.register('mutate', centroid_mutate)
     toolbox.register('evaluate', evaluate)
 
     return toolbox
