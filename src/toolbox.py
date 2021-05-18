@@ -1,7 +1,7 @@
 from deap import base, tools, creator
 from evaluate import evaluate
 from individual import create_individual
-from crossover import mate
+from crossover import mate, centroid_mate
 from mutate import mutate, centroid_mutate
 
 creator.create('FitnessMin', base.Fitness, weights=(-1.0,))
