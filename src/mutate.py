@@ -16,8 +16,8 @@ def centroid_mutate(ind):
     ind_clone = base.Toolbox().clone(ind)
     cromossomes = [c[1] for c in get_csv()]
 
-    # create adaptative clusters with about 20 individuals
-    n_clusters = round(len(cromossomes)/20)
+    # create adaptative clusters with about 200 individuals
+    n_clusters = round(len(cromossomes)/200)
 
     kmeans = KMeans(n_clusters=n_clusters, init="k-means++")
     kmeans.fit(cromossomes)
