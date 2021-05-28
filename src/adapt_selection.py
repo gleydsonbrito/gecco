@@ -1,4 +1,5 @@
 from deap import tools
+
 from constants import NPOP
 
 

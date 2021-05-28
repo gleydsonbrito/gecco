@@ -1,8 +1,10 @@
+from deap import algorithms
+
 from toolbox import get_toolbox
 from statistics import get_statistics, get_stats_from_best_ind
 from storage import save_individual
 from constants import NGEN, NPOP, CXPB, MUTPB
-from deap import algorithms
+
 
 toolbox = get_toolbox()
 stats = get_statistics()

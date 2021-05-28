@@ -1,6 +1,7 @@
 from deap import tools
 import numpy as np
 
+
 def get_statistics():
     stats = tools.Statistics(lambda ind: ind.fitness.values)
 
@@ -10,6 +11,7 @@ def get_statistics():
     stats.register('max', np.max)
 
     return stats
+
 
 def get_stats_from_best_ind():
     hal = tools.HallOfFame(1)

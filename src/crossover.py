@@ -1,13 +1,20 @@
 import random
-from storage import save_individual
-from storage import get_csv
+
 import numpy as np
 from sklearn.cluster import KMeans
 from scipy.spatial import distance
 from deap import tools, base, creator
 
+from mutate import filtered_inds
+from storage import save_individual, get_csv
+
 
 def mate(indA, indB):
+    # Cada ind tem 30% de chance de efetuar o cruzamento baseado em centroide
+    # a partir dos indivíduos com aptidão menores que 20.000
+    if random.random() < 0.3:
+        return centroid_mate(indA, indB)
+
     copy_a = base.Toolbox().clone(indA)
     copy_b = base.Toolbox().clone(indB)
 
@@ -24,10 +31,12 @@ def centroid_mate(indA, indB):
     copy_a = base.Toolbox().clone(indA)
     copy_b = base.Toolbox().clone(indB)
 
-    individuals = [c[1] for c in get_csv()]
+    #individuals = [c[1] for c in get_csv()]
+    # recupera os indivíduos com fitness abaixo de 20 para montar os clusters
+    individuals = filtered_inds(get_csv)
 
     # create adaptative clusters with about 20 individuals
-    n_clusters = round(len(individuals)/20)
+    n_clusters = round(len(individuals)/50)
 
     kmeans = KMeans(n_clusters=n_clusters, init="k-means++")
     kmeans.fit(individuals)

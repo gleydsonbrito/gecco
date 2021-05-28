@@ -1,9 +1,11 @@
-from constants import LOWER, UPPER
+import random
+
 from deap import base
-from storage import get_csv
 from sklearn.cluster import KMeans
 from scipy.spatial import distance
-import random
+
+from constants import LOWER, UPPER
+from storage import get_csv
 
 
 def mutate(ind):
@@ -12,12 +14,24 @@ def mutate(ind):
     return ind,
 
 
+def filtered_inds(mFunc):
+    croms = []
+    for c in mFunc():
+        if c[0] <= 20.0:
+            croms.append(c[1])
+    return croms
+
+
 def centroid_mutate(ind):
     ind_clone = base.Toolbox().clone(ind)
-    cromossomes = [c[1] for c in get_csv()]
+    #cromossomes = [c[1] for c in get_csv()]
 
-    # create adaptative clusters with about 200 individuals
-    n_clusters = round(len(cromossomes)/200)
+    # adicionei a função filtered_inds
+    # para filtrar o inds com fitness >= 20
+    cromossomes = filtered_inds(get_csv)
+
+    # create adaptative clusters with about 50 individuals
+    n_clusters = round(len(cromossomes)/50)
 
     kmeans = KMeans(n_clusters=n_clusters, init="k-means++")
     kmeans.fit(cromossomes)
