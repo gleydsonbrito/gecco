@@ -14,7 +14,7 @@ def mate(indA, indB):
     """Function to crossover two individual. Part of evolutionary process.
     :params indA: the first individual to crossover
     :params indB: the second indivitual to crossover
-    :return : This function return two childrens created by two parents indA 
+    :return : This function return two childrens created by parents indA 
     and indB.
     First will be calculated the probability to use the centroid_mate
     operator. If no use this operator, the algorthm goes to the normal
@@ -25,7 +25,7 @@ def mate(indA, indB):
 
     # Cada ind tem 30% de chance de efetuar o cruzamento baseado em centroide
     # a partir dos indivíduos com aptidão menores que 20.000
-    if random.random() < 0.4:
+    if random.random() < 0.3:
         return centroid_mate(indA, indB)
 
     copy_a = base.Toolbox().clone(indA)
@@ -53,7 +53,7 @@ def centroid_mate(indA, indB):
     individuals = [c[1] for c in all_individuals()]
 
     # create adaptative clusters with about 20 individuals
-    n_clusters = round(len(individuals)/20)
+    n_clusters = round(len(individuals)/5)
 
     # use 5 quando for com memória
     kmeans = KMeans(n_clusters=5, init="k-means++")
@@ -95,19 +95,3 @@ def merge(indA, indB):
             children[i] = indB[i]
 
     return children
-
-# essa abordagem foi abortada
-
-
-def sgd_mate(indA, indB, population):
-    k_best_inds = tools.selBest(population, 20)
-    group_a = k_best_inds[:4]
-    group_b = k_best_inds[5:]
-
-    centroid_a = creator.Individual(np.mean(group_a))
-    centroid_b = creator.Individual(np.mean(group_b))
-
-    ind_a = merge(indA, centroid_a)
-    ind_b = merge(indB, centroid_b)
-
-    return ind_a, ind_b

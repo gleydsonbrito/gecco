@@ -37,7 +37,7 @@ def centroid_mutate(ind):
 
     # create adaptative clusters with about 50 individuals for files CSV
     # create adaptative clusters with about 20 inds for memory inds
-    n_clusters = round(len(cromossomes)/20)
+    n_clusters = round(len(cromossomes)/5)
 
     kmeans = KMeans(n_clusters=n_clusters, init="k-means++")
     kmeans.fit(cromossomes)
