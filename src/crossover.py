@@ -41,11 +41,19 @@ def mate(indA, indB):
 
 
 def centroid_mate(indA, indB):
+    """Crossover two inds by centroid operator.
+    :params indA: first ind to crossover
+    :params indB: second ind to crossover
+    :return : A generated individual by two parents
+    First create a copy of two inds. Retrive all of individual stored in
+    memory or csv file. Create a number of cluster, dinamic or
+    deterministicly. Get the virtual ind by :meth:get_closer_ind. After
+    merge two childrens by :meth:merge. Return two childrens created.
+    :meth:filtered_inds apply filter when we use the inds stored in CSV file.
+    """
     copy_a = base.Toolbox().clone(indA)
     copy_b = base.Toolbox().clone(indB)
 
-    # individuals = [c[1] for c in get_csv()]
-    # recupera os indivíduos com fitness abaixo de 20 para montar os clusters
     # usando arquivo CSV
     # individuals = filtered_inds(get_csv)
 
@@ -56,7 +64,7 @@ def centroid_mate(indA, indB):
     n_clusters = round(len(individuals)/5)
 
     # use 5 quando for com memória
-    kmeans = KMeans(n_clusters=5, init="k-means++")
+    kmeans = KMeans(n_clusters=n_clusters, init="k-means++")
     kmeans.fit(individuals)
 
     centroids = kmeans.cluster_centers_
@@ -71,6 +79,13 @@ def centroid_mate(indA, indB):
 
 
 def get_closer_ind(ind, centroids):
+    """This function get the centroid closest to individual.
+    :params ind: individual to crossover
+    :params centroids: list of centroids of all clusters
+    :return : To find the virtual individual (centroid) closest of individual,
+    cheking all of centroids by euclidean distance. After, copy the cromossome
+    of a virtual individual to generated individual by cloning.
+    """
     min_distance = float('inf')
     closer_ind = base.Toolbox().clone(ind)
     temp_ind = []
@@ -88,6 +103,12 @@ def get_closer_ind(ind, centroids):
 
 
 def merge(indA, indB):
+    """ Create a child by two parents merging your cromossomes.
+    :params indA: first ind to merge
+    :params indB: second ind to merge
+    :return : An individual with cromossome merging by two parents.
+    Each gene has a probability 50% to go of the first parent or second parent.
+    """
     children = base.Toolbox().clone(indA)
     for i in range(len(children)):
         rnd = random.uniform(0, 1)

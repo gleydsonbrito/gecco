@@ -8,6 +8,9 @@ def ranking_selection(pop):
     selectiton to create a selection relative to fitness.
     :params pop: total of individuas in a generation
     :returns : the offspring that allways contain the best individual.
+    First get the best individual of population, and then apply roulette
+    selection in the rest of population. Before, return the offspring plus
+    the best individual.
     """
     k = len(pop)-2
     best_ind = tools.selBest(pop, 1)

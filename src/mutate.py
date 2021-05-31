@@ -31,9 +31,8 @@ def centroid_mutate(ind):
     # para filtrar o inds com fitness >= 20
     # cromossomes = filtered_inds(get_csv)
 
-    # Memoria
-    croms = all_individuals()
-    cromossomes = [c[1] for c in croms]
+    # recupera todos os individuos em memoria
+    cromossomes = [c[1] for c in all_individuals()]
 
     # create adaptative clusters with about 50 individuals for files CSV
     # create adaptative clusters with about 20 inds for memory inds
