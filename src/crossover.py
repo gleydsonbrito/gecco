@@ -11,7 +11,7 @@ from memory_store import all_individuals, add_inds
 
 
 def mate(indA, indB):
-    """Function to crossover two individual. Part of evolutionary process.
+    """Function to crossover two individuals. Part of evolutionary process.
     :params indA: the first individual to crossover
     :params indB: the second indivitual to crossover
     :return : This function return two childrens created by parents indA 
@@ -25,7 +25,8 @@ def mate(indA, indB):
 
     # Cada ind tem 30% de chance de efetuar o cruzamento baseado em centroide
     # a partir dos indivíduos com aptidão menores que 20.000
-    if random.random() < 0.3:
+    # quando a probabilidade está 0.0 não se considera a função centroid_mate
+    if random.random() < 0.1:
         return centroid_mate(indA, indB)
 
     copy_a = base.Toolbox().clone(indA)
@@ -55,13 +56,13 @@ def centroid_mate(indA, indB):
     copy_b = base.Toolbox().clone(indB)
 
     # usando arquivo CSV
-    # individuals = filtered_inds(get_csv)
+    individuals = filtered_inds(get_csv)
 
     # usando memoria
-    individuals = [c[1] for c in all_individuals()]
+    # individuals = [c[1] for c in all_individuals()]
 
     # create adaptative clusters with about 20 individuals
-    n_clusters = round(len(individuals)/5)
+    n_clusters = round(len(individuals)/7)
 
     # use 5 quando for com memória
     kmeans = KMeans(n_clusters=n_clusters, init="k-means++")
@@ -107,7 +108,7 @@ def merge(indA, indB):
     :params indA: first ind to merge
     :params indB: second ind to merge
     :return : An individual with cromossome merging by two parents.
-    Each gene has a probability 50% to go of the first parent or second parent.
+    Each gene has a probability 50% to go of the first or second parent.
     """
     children = base.Toolbox().clone(indA)
     for i in range(len(children)):

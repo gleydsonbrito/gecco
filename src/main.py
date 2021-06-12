@@ -15,10 +15,10 @@ pop = toolbox.population(n=NPOP)
 for i in pop:
     i.fitness.values = toolbox.evaluate(i)
     # arquivo
-    # save_individual(i.fitness.values, i)
+    save_individual(i.fitness.values, i)
 
     # memoria
-    add_inds([i.fitness.values, i])
+    # add_inds([i.fitness.values, i])
 
 algorithms.eaSimple(
     pop,
@@ -34,4 +34,4 @@ algorithms.eaSimple(
 print("Best ind: {}".format(best_individual[0]))
 print("Fitness Value: {}".format(best_individual[0].fitness.values))
 #print('Best Fit: {}'.format(evaluate(list(hal[0]))))
-print(len(all_individuals()))
+# print(len(all_individuals()))

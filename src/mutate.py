@@ -18,21 +18,25 @@ def mutate(ind):
 def filtered_inds(mFunc):
     croms = []
     for c in mFunc():
-        if c[0] <= 20.0:
+        if c[0] <= 40.0:
             croms.append(c[1])
     return croms
 
 
+def filtered_ind(ind):
+    return ind[0] < 20.0
+
+
 def centroid_mutate(ind):
     ind_clone = base.Toolbox().clone(ind)
-    #cromossomes = [c[1] for c in get_csv()]
+    # cromossomes = [c[1] for c in get_csv()]
 
     # adicionei a função filtered_inds
-    # para filtrar o inds com fitness >= 20
-    # cromossomes = filtered_inds(get_csv)
+    # para filtrar o inds com fitness < 20
+    cromossomes = filtered_inds(get_csv)
 
     # recupera todos os individuos em memoria
-    cromossomes = [c[1] for c in all_individuals()]
+    # cromossomes = [c[1] for c in all_individuals()]
 
     # create adaptative clusters with about 50 individuals for files CSV
     # create adaptative clusters with about 20 inds for memory inds
