@@ -26,7 +26,7 @@ def mate(indA, indB):
     # Cada ind tem 30% de chance de efetuar o cruzamento baseado em centroide
     # a partir dos indivíduos com aptidão menores que 20.000
     # quando a probabilidade está 0.0 não se considera a função centroid_mate
-    if random.random() < 0.1:
+    if random.random() < 0.15:
         return centroid_mate(indA, indB)
 
     copy_a = base.Toolbox().clone(indA)
@@ -62,7 +62,7 @@ def centroid_mate(indA, indB):
     # individuals = [c[1] for c in all_individuals()]
 
     # create adaptative clusters with about 20 individuals
-    n_clusters = round(len(individuals)/7)
+    n_clusters = round(len(individuals)/10)
 
     # use 5 quando for com memória
     kmeans = KMeans(n_clusters=n_clusters, init="k-means++")

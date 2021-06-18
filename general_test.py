@@ -4,21 +4,21 @@ import numpy as np
 
 items = get_csv()
 
-s_items = sorted(items, key=lambda i: i[0])
+s_items = sorted(items, key=lambda i: i[0], reverse=True)
 x: float = []
 y: float = []
 
 for i in s_items:
-    if True:
-        x.append(i[1][6])
+    if i[0] < 1000:
+        x.append(i[1][7])
         y.append(i[0])
 
-plt.scatter(x, y)
+plt.scatter(y, x)
 plt.ylabel("Fitness")
 plt.xlabel("Values")
 
-z = np.polyfit(x, y, 1)
+z = np.polyfit(y, x, 1)
 p = np.poly1d(z)
-plt.plot(x, p(x), "r--")
+plt.plot(y, p(y), "r--")
 
 plt.show()

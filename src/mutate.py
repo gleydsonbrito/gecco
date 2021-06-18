@@ -18,7 +18,7 @@ def mutate(ind):
 def filtered_inds(mFunc):
     croms = []
     for c in mFunc():
-        if c[0] <= 40.0:
+        if c[0] <= 20.0:
             croms.append(c[1])
     return croms
 
