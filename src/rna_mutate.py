@@ -27,7 +27,7 @@ X = np.array(X).reshape(-1, 1)
 Y = np.array(Y).reshape(-1, 29)
 
 
-X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=0.10)
+X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=0.30)
 
 # normalize = preprocessing.Normalization()
 # normalize.adapt(X_train)
@@ -43,7 +43,7 @@ model = Sequential([
 ])
 
 model.compile(loss='categorical_crossentropy',
-              optimizer='adam',
+              optimizer='sgd',
               metrics=['accuracy'])
 
 history = model.fit(X_train, Y_train,
