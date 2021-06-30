@@ -23,7 +23,7 @@ def mate(indA, indB):
     that will be chaged. The gene chosed will be permuted between individuals.
     """
 
-    # Cada ind tem 30% de chance de efetuar o cruzamento baseado em centroide
+    # Cada ind tem 15% de chance de efetuar o cruzamento baseado em centroide
     # a partir dos indivíduos com aptidão menores que 20.000
     # quando a probabilidade está 0.0 não se considera a função centroid_mate
     if random.random() < 0.15:
