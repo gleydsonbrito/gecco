@@ -83,7 +83,8 @@ def get_closer_ind(ind, centroids):
     """This function get the centroid closest to individual.
     :params ind: individual to crossover
     :params centroids: list of centroids of all clusters
-    :return : To find the virtual individual (centroid) closest of individual,
+    :return : A virtual individual closest of a individual.
+    To find the virtual individual (centroid) closest of individual,
     cheking all of centroids by euclidean distance. After, copy the cromossome
     of a virtual individual to generated individual by cloning.
     """
